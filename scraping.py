@@ -31,24 +31,28 @@ def download_image(u, filepath):
       remove(filepath)
       return False
 
-def find_more_strings(text, delimiter1, delimiter2):
+def find_more_strings_i(text, delimiter1, delimiter2):
   rgx_all = '[\w\s]+'
   rgx1 = delimiter1 + rgx_all
   rgx2 = rgx_all + delimiter2
   res1 = [m.start() + len(delimiter1) for m in re.finditer(rgx1, text)]
-  res2 = [m.start() for m in re.finditer(rgx2, text)]
+  res2 = [m.start()                   for m in re.finditer(rgx2, text)]
   if(len(res1) != len(res2)):
     raise Exception("len are different: " + str(len(res1)) + ", " + str(len(res2))) 
+  return res1, res2
 
+def find_more_strings(text, delimiter1, delimiter2):
+  res1, res2 = find_more_strings_i(text, delimiter1, delimiter2)
   strings = []
   for i in range(len(res1)):
     strings.append(text[res1[i]:res2[i]])
-
   return strings
 
 def find_string(string, delimiter1, delimiter2):
   rgx = delimiter1 + '.*' + delimiter2
   res = re.search(rgx, string)
-  res2 = res.group(0)[len(delimiter1):-len(delimiter2)]
+  if (res != None):
+    res2 = res.group(0)[len(delimiter1):-len(delimiter2)]
+  else:
+    res2 = None
   return res2
-
