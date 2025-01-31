@@ -18,7 +18,9 @@ def print_red(string):
   print('\033[91m' + string + '\033[0m')
 
 def read_inches(string):
-  if (string.replace('.', '', 1).isdigit()):
+  if (string is None or string == ''):
+    inch = 'NA'
+  elif (string.replace('.', '', 1).isdigit()):
     # Simple number
     inch = float(string)
   elif (string.replace('&#039;', '', 1).replace('&quot;', '', 1).replace('.','').isdigit()):
@@ -31,10 +33,13 @@ def read_inches(string):
   else:
     print_red("Can't read inches: " + string)
     inch = 'NA'
+
   return inch
 
 def read_cm(string):
-  if (string.replace('.', '', 1).isdigit()):
+  if (string is None or string == ''):
+    cm = 'NA'
+  elif (string.replace('.', '', 1).isdigit()):
     cm = float(string)
     # Simple number
   elif (string[:-2].replace('.', '', 1).isdigit()):
@@ -60,8 +65,7 @@ def read_inches_cm(string_inches, string_cm):
     # 1 centimeter is equal to 0.3937007874 inches
     if(abs(inches - cm * 0.3937007874) > 5):
       print_red('Inch / cm BIG mismatch: ' + str(inches) + ' - ' + str(cm) )
-      inches = "NA"
-      cm = "NA"
+      return 'NA', 'NA'
 
     # Check if values > 0
     if(inches <= 0):
@@ -77,24 +81,16 @@ def data_point(string, i):
   i = move_ptr_after(html, string, i)
   i = move_ptr_after(html, string, i)
 
+  i_end = move_ptr_after(html, '</div>', i)
+
+  # Look for 2 data points (US and EU)
   # Example:
   # <span class="DataPoint">35.5</span>
   # <span class="Separator">/</span>
   # <span class="DataPoint">90</span>
-
-  st = "<span class=\"DataPoint\">"
-  b1 = move_ptr_after(html, st, i)
-  b2 = move_ptr_after(html, st, b1)
-  #b3 = move_ptr_after(html, st, b2)
-
-  st = "</span>"
-  e1 = move_ptr(html, st, b1)
-  e2 = move_ptr(html, st, b2)
-  #e3 = move_ptr(html, st, b3)
-
-  us_string = html[b1:e1]
-  eu_string = html[b2:e2]
-  #uk_string = html[b3:e3]
+  us_string = scraping.find_string(html[i:i_end], '<span class="DataPoint">', '</span>')
+  i = move_ptr_after(html, "Separator", i)
+  eu_string = scraping.find_string(html[i:i_end], '<span class="DataPoint">', '</span>')
 
    # Treat dress and shoes differently, they are simpler
   inch_cm_strings = ["Height", "Bust", "Waist", "Hips"]
@@ -102,12 +98,12 @@ def data_point(string, i):
     inch, cm = read_inches_cm(us_string, eu_string)
     return cm
   else:
-    if(eu_string.isdigit()):
+    if(eu_string is None or eu_string == ''):
+      return 'NA'
+    elif(eu_string.isdigit()):
       return int(eu_string)
     elif(eu_string.replace('.','',1).isdigit()):
       return float(eu_string)
-    elif(eu_string == ''):
-      return 'NA'
     else:
       return eu_string
 
@@ -119,6 +115,9 @@ def hair_eyes(string, i):
 
   # Example: <div class="Wrap">Dark brown</div>
   color = scraping.find_string(html[i:], '<div class=\"Wrap\">', '</div>')
+
+  if color == '':
+    color = 'NA'
 
   return color
 
@@ -149,7 +148,7 @@ for l in letters[offset:]:
       model_name = scraping.find_string(st, '<h3 itemprop=\"accountablePerson\">', '</h3>')
       url = scraping.find_string(st, '<div class="Link"><a href=\"', '\" itemprop=\"url\">')
       url = "https:" + url
-      print(model_name + ": " + url)
+      #print(model_name + ": " + url)
       model_urls.append(url)
       model_names.append(model_name)
 
@@ -199,13 +198,18 @@ for l in letters[offset:]:
     # Example: "https://www.fashionmodeldirectory.com/models/toma_aardenburg/",
     html = scraping.read_webpage(url_m)
 
+    # TODO There may be people with inches and not cm
+    # Example: https://www.fashionmodeldirectory.com/models/fie_paarup/
+
     # Read nationality
     string = "<div class=\"Nationality\" itemprop=\"nationality\">"
     nationality = scraping.find_string(html, string, '</div>')
+    if(nationality == None or nationality == ''):
+      nationality = "NA"
 
     # Birthdate
     date = scraping.find_string(html, '<div itemprop="birthDate">Born ', '</div>')
-    if(date == None):
+    if(date == None or date == ''):
       date = "NA"
 
     # Look for second ModelMeasurements (if there it is)
