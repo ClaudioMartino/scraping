@@ -31,7 +31,7 @@ Monica Bellucci,https://www.fashionmodeldirectory.com/models/monica_bellucci/,It
 ```
 
 ## Results
-The dataset contains 15030 people.
+The dataset contains 15030 people in total.
 
 ### Quality
 Most of the birth dates are missing.
@@ -46,16 +46,19 @@ Name and url are always available.
 
 |        |  Name | Nationality | Birth date |     Height |       Bust |      Waist |       Hips | Dress |     Shoes |  Hair |  Eyes |
 | ------ | ----- | ----------- | ---------- | ---------- | ---------- | ---------- | ---------- | ----- | --------- | ----- | ----- |
-| count  | 15030 |       15009 |       5071 |      14988 |      15030 |      15030 |      15030 | 14847 |     14372 | 15011 | 15011 |
+| count  | 15030 |       15009 |       5071 |      14988 |      14967 |      14916 |      14965 | 14847 |     14372 | 15011 | 15011 |
 | unique | 15030 |         140 |       3468 |            |            |            |            |    36 |           |    19 |    17 |
 | freq   |     1 |        2263 |         99 |            |            |            |            |  5110 |           |  5094 |  4733 |
 | mean   |       |             |            |     177.85 |      83.45 |      61.89 |      88.60 |       |     39.80 |  |  |
-| std    |       |             |            |       3.76 |       4.64 |       4.54 |       3.06 |       |      1.70 |  |  |
-| min    | | | | [155.0](https://www.fashionmodeldirectory.com/models/celine_joiris/) | [70.0](https://www.fashionmodeldirectory.com/models/li_fuyao/) | [50.0](https://www.fashionmodeldirectory.com/models/gabriella_buhlin/) | [74,0](https://www.fashionmodeldirectory.com/models/luis_liranzo/)        |       |      35.0 |  |  |
+| std    |       |             |            |       3.76 |       4.65 |       4.55 |       3.06 |       |      1.70 |  |  |
+| min    | | | | [155.0](https://www.fashionmodeldirectory.com/models/celine_joiris/) | [70.0](https://www.fashionmodeldirectory.com/models/li_fuyao/) | [50.0](https://www.fashionmodeldirectory.com/models/gabriella_buhlin/) | [74.0](https://www.fashionmodeldirectory.com/models/luis_liranzo/)        |       |      35.0 |  |  |
 | 25%    |       |             |            |      175.0 |       81.0 |       60.0 |       87.0 |       |      39.0 |  |  |
 | 50%    |       |             |            |      178.0 |       83.0 |       61.0 |       89.0 |       |      39.0 |  |  |
 | 75%    |       |             |            |      180.0 |       86.0 |       62.0 |       90.0 |       |      41.0 |  |  |
 | max    | | | | [198.0](https://www.fashionmodeldirectory.com/models/dusty_lachowicz/) | [120.5](https://www.fashionmodeldirectory.com/models/lovisa_lager/) | [111.0](https://www.fashionmodeldirectory.com/models/ceval_omar/) | [138.5](https://www.fashionmodeldirectory.com/models/lovisa_lager/)  |       |      48.0 |  |  |
+
+
+![Height per nationality](height_nationalities.png)
 
 We grouped the colors of the eyes and the hair according to the following tables:
 
