@@ -47,6 +47,7 @@ Name and url are always available.
 |        |  Name | Nationality | Birth date |     Height |       Bust |      Waist |       Hips | Dress |     Shoes |  Hair |  Eyes |
 | ------ | ----- | ----------- | ---------- | ---------- | ---------- | ---------- | ---------- | ----- | --------- | ----- | ----- |
 | count  | 15030 |       15009 |       5071 |      14988 |      14967 |      14916 |      14965 | 14847 |     14372 | 15011 | 15011 |
+| N/A    |     0 |          21 |       9959 |         42 |         63 |        114 |         65 |   183 |       658 |    19 |    19 |
 | unique | 15030 |         140 |       3468 |            |            |            |            |    36 |           |    19 |    17 |
 | freq   |     1 |        2263 |         99 |            |            |            |            |  5110 |           |  5094 |  4733 |
 | mean   |       |             |            |     177.85 |      83.45 |      61.89 |      88.60 |       |     39.80 |  |  |
@@ -57,6 +58,7 @@ Name and url are always available.
 | 75%    |       |             |            |      180.0 |       86.0 |       62.0 |       90.0 |       |      41.0 |  |  |
 | max    | | | | [198.0](https://www.fashionmodeldirectory.com/models/dusty_lachowicz/) | [120.5](https://www.fashionmodeldirectory.com/models/lovisa_lager/) | [111.0](https://www.fashionmodeldirectory.com/models/ceval_omar/) | [138.5](https://www.fashionmodeldirectory.com/models/lovisa_lager/)  |       |      48.0 |  |  |
 
+![Main scatter plot](main_scatter.png)
 
 ![Height per nationality](height_nationalities.png)
 
