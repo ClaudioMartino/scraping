@@ -2,6 +2,7 @@ from urllib.request import urlopen, Request
 import re
 import string
 import sys
+from os import remove
 
 def open_url(u):
   print('Opening ' + u)

@@ -31,36 +31,34 @@ Monica Bellucci,https://www.fashionmodeldirectory.com/models/monica_bellucci/,It
 ```
 
 ## Results
-The dataset contains 15030 people in total.
-
-### Quality
-Most of the birth dates are missing.
-
-![Quality](na.png)
-
-Name and url are always available.
-
 ### Descriptive analysis
-
-![Histograms](histograms.png)
+The dataset contains 15030 people in total.
 
 |        |  Name | Nationality | Birth date |     Height |       Bust |      Waist |       Hips | Dress |     Shoes |  Hair |  Eyes |
 | ------ | ----- | ----------- | ---------- | ---------- | ---------- | ---------- | ---------- | ----- | --------- | ----- | ----- |
-| count  | 15030 |       15009 |       5071 |      14988 |      14967 |      14916 |      14965 | 14847 |     14372 | 15011 | 15011 |
-| N/A    |     0 |          21 |       9959 |         42 |         63 |        114 |         65 |   183 |       658 |    19 |    19 |
-| unique | 15030 |         140 |       3468 |            |            |            |            |    36 |           |    19 |    17 |
-| freq   |     1 |        2263 |         99 |            |            |            |            |  5110 |           |  5094 |  4733 |
-| mean   |       |             |            |     177.85 |      83.45 |      61.89 |      88.60 |       |     39.80 |  |  |
-| std    |       |             |            |       3.76 |       4.65 |       4.55 |       3.06 |       |      1.70 |  |  |
-| min    | | | | [155.0](https://www.fashionmodeldirectory.com/models/celine_joiris/) | [70.0](https://www.fashionmodeldirectory.com/models/li_fuyao/) | [50.0](https://www.fashionmodeldirectory.com/models/gabriella_buhlin/) | [74.0](https://www.fashionmodeldirectory.com/models/luis_liranzo/)        |       |      35.0 |  |  |
-| 25%    |       |             |            |      175.0 |       81.0 |       60.0 |       87.0 |       |      39.0 |  |  |
-| 50%    |       |             |            |      178.0 |       83.0 |       61.0 |       89.0 |       |      39.0 |  |  |
-| 75%    |       |             |            |      180.0 |       86.0 |       62.0 |       90.0 |       |      41.0 |  |  |
-| max    | | | | [198.0](https://www.fashionmodeldirectory.com/models/dusty_lachowicz/) | [120.5](https://www.fashionmodeldirectory.com/models/lovisa_lager/) | [111.0](https://www.fashionmodeldirectory.com/models/ceval_omar/) | [138.5](https://www.fashionmodeldirectory.com/models/lovisa_lager/)  |       |      48.0 |  |  |
+| **count**  | 15030 |       15009 |       5071 |      14988 |      14967 |      14916 |      14965 | 14847 |     14372 | 15011 | 15011 |
+| **N/A**    |     0 |          21 |       9959 |         42 |         63 |        114 |         65 |   183 |       658 |    19 |    19 |
+| **unique** | 15030 |         140 |       3468 |            |            |            |            |    36 |           |    19 |    17 |
+| **freq**   |     1 |        2263 |         99 |            |            |            |            |  5110 |           |  5094 |  4733 |
+| **mean**   |       |             |            |     177.85 |      83.45 |      61.89 |      88.60 |       |     39.80 |  |  |
+| **std**    |       |             |            |       3.76 |       4.65 |       4.55 |       3.06 |       |      1.70 |  |  |
+| **min**    | | | | [155.0](https://www.fashionmodeldirectory.com/models/celine_joiris/) | [70.0](https://www.fashionmodeldirectory.com/models/li_fuyao/) | [50.0](https://www.fashionmodeldirectory.com/models/gabriella_buhlin/) | [74.0](https://www.fashionmodeldirectory.com/models/luis_liranzo/)        |       |      35.0 |  |  |
+| **25%**    |       |             |            |      175.0 |       81.0 |       60.0 |       87.0 |       |      39.0 |  |  |
+| **50%**    |       |             |            |      178.0 |       83.0 |       61.0 |       89.0 |       |      39.0 |  |  |
+| **75%**    |       |             |            |      180.0 |       86.0 |       62.0 |       90.0 |       |      41.0 |  |  |
+| **max**    | | | | [198.0](https://www.fashionmodeldirectory.com/models/dusty_lachowicz/) | [120.5](https://www.fashionmodeldirectory.com/models/lovisa_lager/) | [111.0](https://www.fashionmodeldirectory.com/models/ceval_omar/) | [138.5](https://www.fashionmodeldirectory.com/models/lovisa_lager/)  |       |      48.0 |  |  |
+
+![Percentages of N/A](na.png)
+
+![Histograms](histograms.png)
 
 ![Main scatter plot](main_scatter.png)
 
+![Main heatmap](main_heatmap.png)
+
 ![Height per nationality](height_nationalities.png)
+
+![Correlogram](correlogram.png)
 
 We grouped the colors of the eyes and the hair according to the following tables:
 
@@ -86,7 +84,7 @@ We grouped the colors of the eyes and the hair according to the following tables
 | Light red    |     6 | Red    |
 | bald         |     2 | Other  |
 
-|               | Count | Group (4) |
+|               | Count | Group (5) |
 | ------------- | ----- | ----- |
 | Blue          |  4733 | Blue  |
 | Brown         |  4438 | Brown |
@@ -106,6 +104,8 @@ We grouped the colors of the eyes and the hair according to the following tables
 | Dark green    |     1 | Green |
 | Blue / brown  |     1 | Blue  |
 
+![Dendrogram](dendrogram.png)
+
 ![Hair eyes heatmap](hair_eyes_heatmap.png)
 
 ![Hair per nationality](hair_nationalities.png)
@@ -117,7 +117,7 @@ In the dataset men and women are mixed. Differences in size and proportions betw
 
 ![Heatmap](heatmap.png)
 
-It seems that there are two distinct Gaussian distributions.
+It seems that there are two distinct Gaussian distributions...
 
 ## References
 1. Topirceanu, A., & Udrescu, M. (2015, September). *FMNet: Physical Trait Patterns in the Fashion World*. In Network Intelligence Conference (ENIC), 2015 Second European (pp. 25-32). IEEE.

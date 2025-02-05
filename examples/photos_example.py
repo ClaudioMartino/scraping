@@ -14,5 +14,5 @@ for i, st in enumerate(strings):
   img_src = scraping.find_string(st, 'src=\"', '\"')
 
   # Download image
-  filepath = 'tmp/' + str(i).zfill(4) + ".jpg"
+  filepath = str(i).zfill(4) + ".jpg"
   scraping.download_image(img_src, filepath)
