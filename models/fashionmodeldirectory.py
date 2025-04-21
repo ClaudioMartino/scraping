@@ -4,16 +4,6 @@ import scraping # import ../scraping.py
 import csv
 import string
 
-def move_ptr(text, string, i):
-  i = text.find(string, i)
-  return i
-
-def move_ptr_after(text, string, i):
-  i = move_ptr(text, string, i)
-  if (i != -1):
-    i = i + len(string)
-  return i
-
 def print_red(string):
   print('\033[91m' + string + '\033[0m')
 
@@ -77,11 +67,11 @@ def read_inches_cm(string_inches, string_cm):
 
 def data_point(string, i):
   # Look for third occurence of input string
-  i = move_ptr_after(html, string, i)
-  i = move_ptr_after(html, string, i)
-  i = move_ptr_after(html, string, i)
+  i = scraping.move_ptr_after(html, string, i)
+  i = scraping.move_ptr_after(html, string, i)
+  i = scraping.move_ptr_after(html, string, i)
 
-  i_end = move_ptr_after(html, '</div>', i)
+  i_end = scraping.move_ptr_after(html, '</div>', i)
 
   # Look for 2 data points (US and EU)
   # Example:
@@ -89,7 +79,7 @@ def data_point(string, i):
   # <span class="Separator">/</span>
   # <span class="DataPoint">90</span>
   us_string = scraping.find_string(html[i:i_end], '<span class="DataPoint">', '</span>')
-  i = move_ptr_after(html, "Separator", i)
+  i = scraping.move_ptr_after(html, "Separator", i)
   eu_string = scraping.find_string(html[i:i_end], '<span class="DataPoint">', '</span>')
 
    # Treat dress and shoes differently, they are simpler
@@ -109,9 +99,9 @@ def data_point(string, i):
 
 def hair_eyes(string, i):
   # Look for third occurence of input string
-  i = move_ptr_after(html, string, i)
-  i = move_ptr_after(html, string, i)
-  i = move_ptr_after(html, string, i)
+  i = scraping.move_ptr_after(html, string, i)
+  i = scraping.move_ptr_after(html, string, i)
+  i = scraping.move_ptr_after(html, string, i)
 
   # Example: <div class="Wrap">Dark brown</div>
   color = scraping.find_string(html[i:], '<div class=\"Wrap\">', '</div>')
@@ -162,17 +152,17 @@ for l in letters[offset:]:
     #while(cnt < models_per_page):
     #  # Look for names and url of models
     #  string="<article class=\"PhotoModule TitleInside"
-    #  i = move_ptr_after(html, string, i)
+    #  i = scraping.move_ptr_after(html, string, i)
     #  if (i == -1):
     #    break
     #  string="<div class=\"Link\"><a href=\""
-    #  i = move_ptr_after(html, string, i)
+    #  i = scraping.move_ptr_after(html, string, i)
     #  string="\" itemprop=\"url\">"
-    #  i2 = move_ptr(html, string, i)
+    #  i2 = scraping.move_ptr(html, string, i)
     #  url = "https:" + html[i:i2]
     #  i = i2 + len(string)
     #  string="</a></div>"
-    #  i2 = move_ptr(html, string, i)
+    #  i2 = scraping.move_ptr(html, string, i)
     #  model_name = html[i:i2]
     #  print(model_name + ": " + url)
     #  model_urls.append(url)
@@ -215,8 +205,8 @@ for l in letters[offset:]:
     # Look for second ModelMeasurements (if there it is)
     string = "ModelMeasurements"
     i = 0
-    i = move_ptr(html, string, i)
-    tmp = move_ptr(html, string, i + len(string))
+    i = scraping.move_ptr(html, string, i)
+    tmp = scraping.move_ptr(html, string, i + len(string))
     if tmp != -1:
       i = tmp
 

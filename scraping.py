@@ -57,3 +57,18 @@ def find_string(string, delimiter1, delimiter2):
   else:
     res2 = None
   return res2
+
+def move_ptr(text, string, i):
+  i = text.find(string, i)
+  return i
+
+def move_ptr_after(text, string, i):
+  i = move_ptr(text, string, i)
+  if (i != -1):
+    i = i + len(string)
+  return i
+
+def find_next(text, start, begin_str, end_str):
+  i_begin = move_ptr_after(text, begin_str, start)
+  i_end = move_ptr(text, end_str, i_begin)
+  return i_begin, i_end
